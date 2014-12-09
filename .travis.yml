@@ -1,0 +1,23 @@
+language: ruby
+rvm:
+- 2.1.2
+env:
+- DB=postgresql
+script:
+- CODECLIMATE_REPO_TOKEN=16d109f017a77e12e9af52396b903a991307530a27c1922ded94cfc0757a137a
+  bundle exec rake
+- RAILS_ENV=test bundle exec rake --trace db:schema:load
+- bundle exec rspec spec
+before_script:
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test' -U postgres
+deploy:
+  provider: heroku
+  app: jwdotcom
+  api_key:
+    secure: AwJbELNa6D5g6zNiAnTmPsE0ZOmJ3bxPsq+dSq4KFEubd6RrvDNSumaXjS9cX0faXOXrxE2Ss5EQ35Fx/d1BCjtorYrtaRGeWdUOMiSAJ9IbRTNSNCRRN6T3QCTlvNEdcj1GChLWy1/jew7FMAS4PdsNAihxo3buKxsu4/0NWEA=
+  run:
+  - rake db:migrate
+  - rake db:seed
+  - restart
+  - rake cleanup
