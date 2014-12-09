@@ -59,7 +59,7 @@ GEM
       slop (~> 3.6)
     climate_control (0.0.3)
       activesupport (>= 3.0)
-    cocaine (0.5.4)
+    cocaine (0.5.5)
       climate_control (>= 0.0.3, < 1.0)
     codeclimate-test-reporter (0.4.3)
       simplecov (>= 0.7.1, < 1.0.0)
@@ -101,6 +101,7 @@ GEM
     pry-rails (0.3.2)
       pry (>= 0.9.10)
     rack (1.6.0.beta2)
+    rack-cors (0.2.9)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.2.0.beta2)
@@ -182,6 +183,7 @@ DEPENDENCIES
   pg
   pry-byebug
   pry-rails
+  rack-cors
   rails (= 4.2.0.beta2)
   rails-api
   rspec-rails (~> 3.0)
