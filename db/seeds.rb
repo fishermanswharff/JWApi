@@ -45,7 +45,7 @@ posts = Post.create([
   {
     title: "TIL: binary trees with nothing",
     body: "Euismod Aenean Ornare Malesuada Inceptos",
-    category_ids: [categories[1].id,categories[4].id],
+    categories: [categories[1],categories[4]],
     user_id: users[0].id
   }
 ])
