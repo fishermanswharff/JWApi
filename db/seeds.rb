@@ -69,10 +69,7 @@ posts[5].categories << Category.find_by(name:"Development")
 posts[6].categories << Category.find_by(name:"Development")
 posts[7].categories << Category.find_by(name:"Development")
 
-
-
-
-
+# curl -X PATCH -F "user[avatar]=@app/assets/images/judge.jpg" -F "user[id]=1" http://localhost:3000/users/1
 
 
 
