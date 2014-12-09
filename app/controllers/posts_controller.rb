@@ -7,11 +7,10 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    render json: @post, status: :ok
+    render json: @post, include: 'user,categories', status: :ok
   end
 
-  def create 
-    @post = Post.new(post_params)
+  def create
     if @post.save
       render json: @post, status: :created, location: @post
     else
@@ -21,10 +20,17 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(post_params)
+
+    if post_params[:category_id]
+      category = Category.find(post_params[:category_id])
+      @post.categories << category
       render json: @post, status: :ok
-    else
-      render json: @post.errors, status: :unprocessable_entity
+    else +
+      if @post.update(post_params)
+        render json: @post, status: :ok
+      else
+        render json: @post.errors, status: :unprocessable_entity
+      end
     end
   end
 
@@ -36,7 +42,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :body, category_ids: [{}])
+    params.require(:post).permit(:title, :body, category_ids: [])
   end
 
 end
