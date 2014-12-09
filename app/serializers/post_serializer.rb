@@ -1,5 +1,5 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :id, :title, :categories, :user
+  attributes :id, :title, :body, :categories, :user
   url [:user, :post]
 
   def categories
