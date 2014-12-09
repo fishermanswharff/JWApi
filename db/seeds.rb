@@ -69,9 +69,13 @@ posts[5].categories << Category.find_by(name:"Development")
 posts[6].categories << Category.find_by(name:"Development")
 posts[7].categories << Category.find_by(name:"Development")
 
+# cUrl to the user's avatar
 # curl -X PATCH -F "user[avatar]=@app/assets/images/judge.jpg" http://localhost:3000/users/1
-# curl -X PATCH -F "post[image]=@app/assets/images/post-image-1.gif" http://localhost:3000/posts/1
+# curl -X PATCH -F "user[avatar]=@app/assets/images/judge.jpg" http://jwdotcom.herokuapp.com/users/9
 
+# cUrl to a post's image
+# curl -X PATCH -F "post[image]=@app/assets/images/post-image-1.gif" http://localhost:3000/posts/1
+# curl -X PATCH -F "post[image]=@/Users/jason/Pictures/Kauai-2014/bin/full-size/kauai-napali-coast-boat-2.jpg" http://jwdotcom.herokuapp.com/posts/40
 
 
 
