@@ -13,5 +13,4 @@ class PostSerializer < ActiveModel::Serializer
   def created_at
     p object.created_at.to_s(:rfc822)
   end
-
 end
