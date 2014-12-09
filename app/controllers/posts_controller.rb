@@ -25,7 +25,7 @@ class PostsController < ApplicationController
       category = Category.find(post_params[:category_id])
       @post.categories << category
       render json: @post, status: :ok
-    else +
+    else
       if @post.update(post_params)
         render json: @post, status: :ok
       else
@@ -42,7 +42,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :body, category_ids: [])
+    params.require(:post).permit(:title, :body, :image, category_ids: [])
   end
 
 end
