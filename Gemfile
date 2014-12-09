@@ -5,6 +5,7 @@ gem 'rails-api'
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 gem 'pg'
 gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'paperclip'
 gem 'arel', '6.0.0.beta2'
 
 group :development, :test do
