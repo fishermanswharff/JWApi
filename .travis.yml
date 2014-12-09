@@ -18,6 +18,6 @@ deploy:
     secure: AwJbELNa6D5g6zNiAnTmPsE0ZOmJ3bxPsq+dSq4KFEubd6RrvDNSumaXjS9cX0faXOXrxE2Ss5EQ35Fx/d1BCjtorYrtaRGeWdUOMiSAJ9IbRTNSNCRRN6T3QCTlvNEdcj1GChLWy1/jew7FMAS4PdsNAihxo3buKxsu4/0NWEA=
   run:
   - rake db:migrate
-  - rake db:seed
+  - rake db:seed # heroku pg:push jwdotcom::ROSE jwdotcom_development
   - restart
   - rake cleanup
