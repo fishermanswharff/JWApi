@@ -3,7 +3,7 @@ class PostSerializer < ActiveModel::Serializer
   url [:user, :post]
 
   def categories
-    object.categories.map { |category| object.categories.name = category.name }
+    object.categories.map { |category| category.name }
   end
   
   def user
