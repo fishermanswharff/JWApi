@@ -46,8 +46,8 @@ categories = Category.create([
 ])
 
 posts = Post.create([
-  { title: "TIL: binary trees with nothing", body: "Euismod Aenean Ornare Malesuada Inceptos", user_id: users[0].id },
-  { title: "TIL: Quick sorting", body: "Donec sed odio dui. Maecenas faucibus mollis interdum. Curabitur blandit tempus porttitor. Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.", user_id: users[0].id },
+  { title: "TIL: binary trees with nothing", body: "<h3>Euismod Aenean Ornare Malesuada Inceptos</h3>", user_id: users[0].id, image: "http://s3.amazonaws.com/dubya-blog-bucket/posts/images/000/000/001/original/post-image-1.gif?1418096877" },
+  { title: "TIL: Quick sorting", body: "<h3>Donec sed odio dui.</h3><p>Maecenas faucibus mollis interdum. Curabitur blandit tempus porttitor. Donec sed odio dui.</p> <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>", user_id: users[0].id, image: "https://s3.amazonaws.com/dubya-blog-bucket/posts/images/000/000/001/original/kauai-napali-coast-boat-2.jpg" },
   { title: "TIL: Ruby", body: "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla.", user_id: users[0].id },
   { title: "TIL: Rails API has_and_belongs_to_many", body: "Vestibulum id ligula porta felis euismod semper. Cras mattis consectetur purus sit amet fermentum. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.", user_id: users[0].id },
   { title: "TIL: AngularJS $promises", body: "Aenean lacinia bibendum nulla sed consectetur. Aenean lacinia bibendum nulla sed consectetur. Sed posuere consectetur est at lobortis. Etiam porta sem malesuada magna mollis euismod.", user_id: users[0].id },

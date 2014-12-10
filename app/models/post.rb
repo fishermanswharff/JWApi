@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   belongs_to :user, dependent: :destroy
   validates :title, :body, presence: true
   has_attached_file :image, 
-                    :styles => { :medium => "300x>", :thumb => "100x>" },
+                    :styles => { xlarge: "960x>", large: "600x>", medium: "300x>", thumb: "100x>" },
                     :bucket => 'dubya-blog-bucket',
                     :s3_credentials => {
                       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
