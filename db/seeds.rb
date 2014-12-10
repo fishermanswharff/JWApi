@@ -42,7 +42,8 @@ categories = Category.create([
   {name: "TIL"},
   {name: "jQuery"},
   {name: "SQL"},
-  {name: "Computer Science"}
+  {name: "Computer Science"},
+  {name: "Testing"}
 ])
 
 posts = Post.create([
