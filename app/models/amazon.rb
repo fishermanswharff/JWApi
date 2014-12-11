@@ -1,5 +1,4 @@
 class Amazon # no inheritance here bc this class does not connect to Postgres
-  
   def self.get_s3_upload_key
     bucket = ENV['S3_BUCKET_NAME']
     access_key = ENV['AWS_ACCESS_KEY_ID']
@@ -20,5 +19,4 @@ class Amazon # no inheritance here bc this class does not connect to Postgres
     signature = Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha1'), secret, policy)).gsub(/\n| |\r/, '')
     return {access_key: access_key, key: key, policy: policy, signature: signature, sas: sas, bucket: bucket, acl: acl, expiration: expiration}
   end
-  
 end

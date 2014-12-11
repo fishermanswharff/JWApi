@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :categories, except: [:new, :edit]
   resources :posts, except: [:new, :edit] do
     resources :categories, except: [:index, :create, :show, :new, :edit]
+    resources :images, except: [:new, :edit]
   end
 
   post '/login', to: 'users#login'
