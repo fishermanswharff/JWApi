@@ -8,6 +8,7 @@ gem 'pg'
 gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'aws-sdk-core'
 gem 'arel', '6.0.0.beta2'
 
 group :development, :test do
