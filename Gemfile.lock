@@ -46,6 +46,11 @@ GEM
     arel (6.0.0.beta2)
     aws-sdk (1.59.1)
       aws-sdk-v1 (= 1.59.1)
+    aws-sdk-core (2.0.13)
+      builder (~> 3.0)
+      jmespath (~> 1.0)
+      multi_json (~> 1.0)
+      multi_xml (~> 0.5)
     aws-sdk-v1 (1.59.1)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
@@ -73,6 +78,8 @@ GEM
       activesupport (>= 4.1.0)
     hike (1.2.3)
     i18n (0.7.0.beta1)
+    jmespath (1.0.2)
+      multi_json (~> 1.0)
     json (1.8.1)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
@@ -83,6 +90,7 @@ GEM
     mini_portile (0.6.1)
     minitest (5.4.3)
     multi_json (1.10.1)
+    multi_xml (0.5.5)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     paperclip (4.2.0)
@@ -177,6 +185,7 @@ DEPENDENCIES
   active_model_serializers!
   arel (= 6.0.0.beta2)
   aws-sdk
+  aws-sdk-core
   bcrypt-ruby (~> 3.1.2)
   codeclimate-test-reporter
   paperclip
