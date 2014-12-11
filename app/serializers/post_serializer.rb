@@ -11,7 +11,8 @@ class PostSerializer < ActiveModel::Serializer
   end
   
   def user
-    object.user.username
+    user = User.find(object.user_id)
+    user.username
   end
 
   def created_at
