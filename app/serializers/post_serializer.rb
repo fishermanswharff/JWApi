@@ -1,10 +1,13 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :id, :title, :body, :categories, :user, :created_at #, :image, :images
-  has_many :images
+  attributes :id, :title, :body, :categories, :user, :created_at, :images #, :image, :images
   url [:user, :post]
 
   def categories
     object.categories.map { |category| category.name }
+  end
+
+  def images
+    object.images.map { |image| image.url }
   end
   
   def user

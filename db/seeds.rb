@@ -57,6 +57,11 @@ posts = Post.create([
   { title: "TIL: Setting up AngularJS with Yeoman", body: "Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.", user_id: users[0].id }
 ])
 
+images = Image.create([
+  {url: "http://s3.amazonaws.com/dubya-blog-bucket/posts/images/000/000/001/original/post-image-1.gif?1418096877"},
+  {url: "https://s3.amazonaws.com/dubya-blog-bucket/posts/images/000/000/001/original/kauai-napali-coast-boat-2.jpg"}
+])
+
 posts[0].categories << Category.find_by(name:"Development")
 posts[0].categories << Category.find_by(name:"Ruby")
 posts[1].categories << Category.find_by(name:"Development")
@@ -69,6 +74,10 @@ posts[4].categories << Category.find_by(name:"Development")
 posts[5].categories << Category.find_by(name:"Development")
 posts[6].categories << Category.find_by(name:"Development")
 posts[7].categories << Category.find_by(name:"Development")
+
+
+posts[0].images << Image.first
+posts[1].images << Image.second
 
 # cUrl to the user's avatar
 # curl -X PATCH -F "user[avatar]=@app/assets/images/judge.jpg" http://localhost:3000/users/1
