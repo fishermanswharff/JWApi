@@ -12,10 +12,16 @@ class ImagesController < ApplicationController
   
   def create
     @image = Image.create(image_params)
-    if @image.save
-      render json: @image, status: :created, location: @image
+    if params[:post_id]
+      @post = Post.find(params[:post_id])
+      @post.images << @image
+      render json: @post, status: :ok, location: @post
     else
-      render json: @image.errors, status: :unprocessable_entity
+      if @image.save
+        render json: @image, status: :created, location: @image
+      else
+        render json: @image.errors, status: :unprocessable_entity
+      end
     end
   end
 

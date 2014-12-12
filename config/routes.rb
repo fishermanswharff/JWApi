@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   resources :images, only: [:index]
   resources :posts, except: [:new, :edit] do
     resources :categories, except: [:index, :create, :show, :new, :edit]
-    resources :images, except: [:index, :new, :edit]
+    resources :images, only: [:create, :update]
   end
 
   post '/login', to: 'users#login'
   get 'logout', to: 'users#logout'
-  get 'amazon/sign_key'  
+  get 'amazon/sign_key', to: 'amazon#sign_key'
 end
