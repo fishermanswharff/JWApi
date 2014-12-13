@@ -1,68 +1,20 @@
-require 'active_support/core_ext'
-
 class Amazon # no inheritance here bc this class does not connect to Postgres
   def self.get_s3_upload_key
-    bucket = ENV['S3_BUCKET_NAME']
-    access_key = ENV['AWS_ACCESS_KEY_ID']
-    secret = ENV['AWS_SECRET_ACCESS_KEY']
-    key = "uploads/#{SecureRandom.uuid}"
-    expiration = 5.minutes.from_now.utc.strftime('%s')
-    max_filesize = 2.megabytes
-    acl = 'public-read'
-    sas = '201' # Tells amazon to redirect after success instead of returning xml
-    policy = Base64.encode64(
-      "{'expiration': '#{expiration}',
+    @bucket = ENV['S3_BUCKET_NAME']
+    @access_key = ENV['AWS_ACCESS_KEY_ID']
+    @secret = ENV['AWS_SECRET_ACCESS_KEY']
+    @expiration = 30.minutes.from_now.utc.strftime('%Y-%m-%dT%H:%M:%S.000Z')
+    @key = "uploads/#{SecureRandom.uuid}"
+    @policy = Base64.encode64(
+      "{'expiration': '#{@expiration}',
       'conditions': [
-        {'bucket': '#{bucket}'},
-        {'acl': '#{acl}'},
-        ['starts-with', '$key', '#{key}'],
-        ['content-length-range', 1, #{max_filesize}],
-        {x-amz-algorithm: 'HMAC-SHA256'},
-        {x-amz-credential: #{access_key}/#{Time.now.strftime('%Y-%m-%d').gsub(/\-/,'')}/us-east-1/s3/aws4_request },
-        {x-amz-date: 5.minutes.from_now.utc.iso8601}
+        {'bucket': '#{@bucket}'},
+        ['starts-with', '$key', '#{@key}'],
+        {'acl': 'public-read'},
+        ['starts-with', '$Content-Type', 'image/jpeg'],
+        ['content-length-range', 0, 10485760],
       ]}").gsub(/\n|\r/, '')
-    date_key = Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), "AWS4" + secret, "20141213")).gsub(/\n| |\r/,'')
-    date_region_key = Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), date_key, "us-east-1")).gsub(/\n| |\r/,'')
-    date_region_service_key = Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), date_region_key, "s3")).gsub(/\n| |\r/,'')
-    signing_key = Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), date_region_service_key, "aws4_request")).gsub(/\n| |\r/,'')
-    
-    signature = Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), signing_key, policy)).gsub(/\n| |\r/, '')
-    signature = CGI.escape(signature)
-    return {access_key: access_key, key: key, policy: policy, signature: signature, sas: sas, bucket: bucket, acl: acl, expiration: expiration}
+    @signature = Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha1'), @secret, @policy)).gsub(/\n| |\r/, '')
+    return {access_key: @access_key, key: @key, policy: @policy, signature: @signature}
   end
-
 end
-
-
-
-# Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), <option1>, <option2>)).gsub(/\n| |\r/,'')
-
-
-# def self.get_s3_upload_key
-#   s3 = AWS::S3.new
-#   bucket = s3.buckets['dubya-blog-bucket']
-#   uri = bucket.objects['uploads'].url_for(:write, expires: 10*60, acl: 'public-read')
-# end  
-
-=begin
-def self.get_s3_upload_key
-  bucket = ENV['S3_BUCKET_NAME']
-  access_key = ENV['AWS_ACCESS_KEY_ID']
-  secret = ENV['AWS_SECRET_ACCESS_KEY']
-  key = "uploads/#{SecureRandom.uuid}"
-  expiration = 5.minutes.from_now.utc.strftime('%Y-%m-%dT%H:%M:%S.000Z')
-  max_filesize = 2.megabytes
-  acl = 'public-read'
-  sas = '201' # Tells amazon to redirect after success instead of returning xml
-  policy = Base64.encode64(
-    "{'expiration': '#{expiration}',
-    'conditions': [
-      {'bucket': '#{bucket}'},
-      {'acl': '#{acl}'},
-      ['starts-with', '$key', '#{key}'],
-      ['content-length-range', 1, #{max_filesize}]
-    ]}").gsub(/\n|\r/, '')
-  signature = Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha1'), secret, policy)).gsub(/\n| |\r/, '')
-  return {access_key: access_key, key: key, policy: policy, signature: signature, sas: sas, bucket: bucket, acl: acl, expiration: expiration}
-end
-=end
