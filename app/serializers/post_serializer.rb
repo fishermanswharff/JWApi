@@ -1,14 +1,10 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :id, :title, :body, :categories, :user, :created_at, :images #, :image, :images
+  attributes :id, :title, :body, :categories, :user, :created_at, :images
   url [:user, :post]
 
   def categories
     object.categories.map { |category| category.name }
   end
-
-  # def images
-  #   object.images.map { |image| url = image.url }
-  # end
   
   def user
     user = User.find(object.user_id)
