@@ -6,9 +6,9 @@ class PostSerializer < ActiveModel::Serializer
     object.categories.map { |category| category.name }
   end
 
-  def images
-    object.images.map { |image| image.url }
-  end
+  # def images
+  #   object.images.map { |image| url = image.url }
+  # end
   
   def user
     user = User.find(object.user_id)
