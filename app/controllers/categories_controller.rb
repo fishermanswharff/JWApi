@@ -28,6 +28,17 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def destroy
+    @category = Category.find(params[:id])
+    if params[:post_id]
+      post = Post.find(params[:post_id])
+      post.categories.delete(@category)
+      head :no_content
+    else
+      @category.destroy
+    end
+  end
+
   private
 
   def category_params
