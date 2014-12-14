@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    Category.find(params[:id]) ? @category = Category.find(params[:id]) : @category = Category.new(category_params)
+    @category = Category.find(params[:id])
     if params[:post_id]
       @post = Post.find(params[:post_id])
       @post.categories << @category
