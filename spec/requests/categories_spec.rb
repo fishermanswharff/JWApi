@@ -4,7 +4,17 @@ require 'spec_helper'
 describe 'Categories API Endpoint' do
 
   before(:each) do
-    
+    User.delete_all
+    @user = User.create(
+      { 
+        first_name: 'foo',
+        last_name: 'bar',
+        username: 'foo',
+        role: 'generic',
+        email: 'foo@bar.com',
+        password: 'secret'
+      }
+    )
   end
   
 
