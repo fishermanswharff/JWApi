@@ -8,6 +8,6 @@ class PostSerializer < ActiveModel::Serializer
   end
 
   def created_at
-    p object.created_at.to_s(:rfc822)
+    p object.created_at.strftime('%Y-%m-%d')
   end
 end

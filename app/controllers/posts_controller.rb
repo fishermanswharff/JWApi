@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_filter :authenticate, only: :create
 
   def index
-    @posts = Post.all.sort_by { |post| post.updated_at }.reverse
+    @posts = Post.all.limit(9) #.sort_by { |post| post.updated_at }.reverse
     render json: @posts
   end
 
