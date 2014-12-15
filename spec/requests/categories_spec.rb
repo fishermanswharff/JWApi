@@ -16,14 +16,13 @@ describe 'Categories API Endpoint' do
       }
     )
   end
-  
 
   describe '#update' do
-
     before(:each) do
       @post = Post.create({
         title: 'My new title',
-        body: 'Some text to test with'
+        body: 'Some text to test with',
+        user_id: @user.id
       })
       @category = Category.create({name: 'Testing'})
       put "/posts/#{@post.id}/categories/#{@category.id}"
