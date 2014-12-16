@@ -1,13 +1,19 @@
 class AdminMailer < ActionMailer::Base
 
-  default to: 'fishermanswharff@mac.com'
+  attr_accessor :name, :email, :body, :params
 
   def admin_email(params)
-    @params = params
+    @name = params['name']
+    @email = params['email']
+    @body = params['body']
     mail(
+        to: 'fishermanswharff@mac.com',
         content_type: "text/html",
         subject: "Sent from JW dot com",
-        template_path: 'admin_mailer'
+        template_path: 'admin_mailer',
+        date: Time.now
         )
   end
 end
+
+# curl -i -X POST -d '[name]=jason&[email]=fishermanswharff@mac.com&[body]=Some text goes here' http://localhost:3000/email/admin
