@@ -64,9 +64,6 @@ GEM
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
-    dotenv (1.0.2)
-    dotenv-rails (1.0.2)
-      dotenv (= 1.0.2)
     erubis (2.7.0)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
@@ -173,7 +170,6 @@ DEPENDENCIES
   aws-sdk
   bcrypt-ruby (~> 3.1.2)
   codeclimate-test-reporter
-  dotenv-rails
   pg
   pry-byebug
   pry-rails

@@ -12,7 +12,7 @@ class AdminMailer < ActionMailer::Base
         subject: "Sent from JW dot com",
         template_path: 'admin_mailer',
         date: Time.now
-        ).deliver
+        )
   end
 end
 
