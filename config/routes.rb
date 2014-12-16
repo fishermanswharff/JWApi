@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   post '/login', to: 'users#login'
   get 'logout', to: 'users#logout'
   get 'amazon/sign_key'
+  post 'email/admin', to: 'contact_form#route_admin'
 end
