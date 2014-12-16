@@ -7,7 +7,7 @@ class AdminMailer < ActionMailer::Base
     @email = params['email']
     @body = params['body']
     mail(
-        to: 'fishermanswharff@mac.com',
+        to: 'jasonwharff@gmail.com',
         content_type: "text/html",
         subject: "Sent from JW dot com",
         template_path: 'admin_mailer',

@@ -83,4 +83,21 @@ Rails.application.configure do
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.logger
+  config.action_mailer.default_url_options = { :host => 'jwdotcom.herokuapp.com' } 
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_options = {from: 'jasonwharff@gmail.com'}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    user_name:            ENV['GMAIL_USER_NAME'],
+    password:             ENV['GMAIL_PASSWORD'],
+    authentication:       :plain,
+    enable_starttls_auto: true,
+    openssl_verify_mode:  'none'
+  }
 end
