@@ -17,7 +17,9 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     if params[:post_id]
       @post = Post.find(params[:post_id])
-      @post.categories << @category
+      unless @post.categories.include? @category
+        @post.categories << @category
+      end
       render json: @post, status: :ok
     else
       if @category.update(category_params)
