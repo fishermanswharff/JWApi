@@ -12,5 +12,6 @@
 /tmp
 /docs
 .project
+.env
 config/aws.yml
 config/gmail.yml

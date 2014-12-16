@@ -22,14 +22,12 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    user_name:            'jasonwharff@gmail.com',
-    password:             'RollaByHenriGervex@1878',
+    user_name:            ENV['GMAIL_USER_NAME'],
+    password:             ENV['GMAIL_PASSWORD'],
     authentication:       :plain,
     enable_starttls_auto: true,
     openssl_verify_mode:  'none'
   }
-  
-
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

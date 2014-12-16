@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/rails-api/active_model_serializers.git
-  revision: c67da11b9697aed1cb42b76ebec051cc86a7c56e
+  revision: 282de2198455b5de33d3465e507083c490383941
   specs:
     active_model_serializers (0.10.0.pre)
       activemodel (>= 4.0)
@@ -64,6 +64,9 @@ GEM
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    dotenv (1.0.2)
+    dotenv-rails (1.0.2)
+      dotenv (= 1.0.2)
     erubis (2.7.0)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
@@ -77,7 +80,7 @@ GEM
     method_source (0.8.2)
     mime-types (2.4.3)
     mini_portile (0.6.1)
-    minitest (5.4.3)
+    minitest (5.5.0)
     multi_json (1.10.1)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
@@ -170,6 +173,7 @@ DEPENDENCIES
   aws-sdk
   bcrypt-ruby (~> 3.1.2)
   codeclimate-test-reporter
+  dotenv-rails
   pg
   pry-byebug
   pry-rails
