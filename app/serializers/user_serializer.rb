@@ -1,4 +1,4 @@
 class UserSerializer < ActiveModel::Serializer
   has_many :posts
-  attributes :username, :first_name, :last_name, :role, :email, :avatar
+  attributes :username, :first_name, :last_name, :role, :email
 end
