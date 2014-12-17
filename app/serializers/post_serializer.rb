@@ -1,5 +1,5 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :id, :title, :body, :categories, :user, :created_at, :images
+  attributes :id, :title, :body, :categories, :created_at, :images, :user 
   url [:user, :post]
   
   def user
@@ -8,6 +8,6 @@ class PostSerializer < ActiveModel::Serializer
   end
 
   def created_at
-    p object.created_at.strftime('%Y-%m-%d')
+    object.created_at.strftime('%Y-%m-%d')
   end
 end

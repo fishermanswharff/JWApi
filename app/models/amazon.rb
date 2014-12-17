@@ -14,7 +14,7 @@ class Amazon # no inheritance here bc this class does not connect to Postgres
         ['starts-with', '$Content-Type', 'image/jpeg'],
         ['content-length-range', 0, 10485760],
       ]}").gsub(/\n|\r/, '')
-    @signature = Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha1'), @secret, @policy)).gsub(/\n| |\r/, '')
+    @signature = Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha1'), @secret, @policy)).gsub(/\n| |\r/, '')
     return {access_key: @access_key, key: @key, policy: @policy, signature: @signature}
   end
 end

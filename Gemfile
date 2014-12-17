@@ -14,8 +14,14 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
+  gem "factory_girl_rails", "~> 4.0"
+  gem "faker"
 end
 
 group :test do 
   gem "codeclimate-test-reporter", require: nil
+end
+
+group :development do
+  gem 'unicorn'
 end
