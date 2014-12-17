@@ -2,9 +2,14 @@ language: ruby
 rvm:
 - 2.1.2
 env:
-- DB=postgresql
+  matrix:
+  - DB=postgresql
+  - secure: fJlP+LEQ9G+dlAeVD73OATUqV9AhmPACkpJdIxX20Fm3HS+5aPLlI4eXN982r/Sf3rArol0gdHEvILFg0D4TB3BFsRV201gHYXfSOUznTvEnlSZAGI48vSzbeiAyMLceOVUTAY9yv0TVHZgTMBN+MAC3MbAczqf/sKb/WD26yLc=
+  - secure: seCjKEjHUp8/U5cxO8W+NsxqES4fh5pMQKN+9qc6RVHkLHyK280KrOC6jdLw8p5j0J4PNmlYDPCpksSXVlaJCJkn2+FN9yvx5xVZwe1jiIjskjooxH3y10O8WCWDpOziOo1N0/24Mq1ihZpN0Addf1tk46qyIJdOd4Jl5W5jzr0=
+  - secure: Yh8iyQ04rtK5R78avZHjNKb9YCFyUAfkLzsrPxP0wDE/8lu9QFQX6yVFpBSySYQmqSxEAmTGjRWJDZJVgL2bfogfCvnmbXdOYapLTLGiTTisQBoWfzX5dnyhwY0F4mx1qR/dz+gQQKvs4CJDcb8pN2DzCCoQzcp+dX6xc8F/xZk=
 script:
-- CODECLIMATE_REPO_TOKEN=21565a4d06774047e028ea85471503b78b5f261c5e4ef1211ad11b1096f7cff5 bundle exec rake
+- CODECLIMATE_REPO_TOKEN=21565a4d06774047e028ea85471503b78b5f261c5e4ef1211ad11b1096f7cff5
+  bundle exec rake
 - RAILS_ENV=test bundle exec rake --trace db:schema:load
 - bundle exec rspec spec
 before_script:
@@ -17,6 +22,5 @@ deploy:
     secure: AwJbELNa6D5g6zNiAnTmPsE0ZOmJ3bxPsq+dSq4KFEubd6RrvDNSumaXjS9cX0faXOXrxE2Ss5EQ35Fx/d1BCjtorYrtaRGeWdUOMiSAJ9IbRTNSNCRRN6T3QCTlvNEdcj1GChLWy1/jew7FMAS4PdsNAihxo3buKxsu4/0NWEA=
   run:
   - rake db:migrate
-  # - rake db:seed
   - restart
   - rake cleanup
