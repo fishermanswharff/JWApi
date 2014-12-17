@@ -8,6 +8,7 @@ gem 'pg'
 gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'aws-sdk'
 gem 'arel', '6.0.0.beta2'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
