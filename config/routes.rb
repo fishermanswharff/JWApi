@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get 'logout', to: 'users#logout'
   get 'amazon/sign_key'
   post 'email/admin', to: 'contact_form#route_admin'
+  get '/' => redirect('https://github.com/fishermanswharff/JWApi')
 end
