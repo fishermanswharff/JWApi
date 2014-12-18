@@ -58,8 +58,10 @@ posts = Post.create([
 ])
 
 images = Image.create([
-  {url: "http://s3.amazonaws.com/dubya-blog-bucket/posts/images/000/000/001/original/post-image-1.gif?1418096877"},
-  {url: "https://s3.amazonaws.com/dubya-blog-bucket/posts/images/000/000/001/original/kauai-napali-coast-boat-2.jpg"}
+  {url: "https://s3.amazonaws.com/dubya-blog-bucket/uploads/02fbaf0a-f4fd-4020-b8da-ce151d984461"},
+  {url: "https://s3.amazonaws.com/dubya-blog-bucket/uploads/0387c758-a98c-4d22-aa3b-71d94ee4787b"},
+  {url: "https://s3.amazonaws.com/dubya-blog-bucket/uploads/15a9bffb-eb6e-4434-80d7-1ed4fe015357"},
+  {url: "https://s3.amazonaws.com/dubya-blog-bucket/uploads/ead72a0e-ab5a-4627-b0af-919aa4473d55"}
 ])
 
 posts[0].categories << Category.find_by(name:"Development")
@@ -76,8 +78,10 @@ posts[6].categories << Category.find_by(name:"Development")
 posts[7].categories << Category.find_by(name:"Development")
 
 
-posts[0].images << Image.first
-posts[1].images << Image.second
+posts[0].images << images[0]
+posts[1].images << images[1]
+posts[2].images << images[2]
+posts[3].images << images[3]
 
 # cUrl to the user's avatar
 # curl -X PATCH -F "user[avatar]=@app/assets/images/judge.jpg" http://localhost:3000/users/1
