@@ -19,3 +19,8 @@ deploy:
   - rake db:seed
   - restart
   - rake cleanup
+env:
+  global:
+  - secure: eY04F5OBrZo75UHMaWJcssLer1059KOATAFnG7pw4Qw9IlURjJKGTjUd+kwSDVXZOzVZhiJABphOZmWLKG6L3vAczCEhbsWl0EcuIyQi0gWttp4PobVqisnR6CYF5/4t6TW8E6j7dbivBUNzb1apLgvd5W7J7utEijBgIT9j7o8=
+  - secure: p8zw+KOjELiuPptTEiEEBUfer1vDeXMp7UH4gMveMr+ydUtdvLXG7dHBEfP+qZF84yjOs7yyKYFICjcu83pY1dNa7IOpLZwXS0aytOYdsJoDHaiPR+wUZ7Qn9fzKiaO8GaM14u9N3+xXt2wy4TA+q7vK/JWnXHb7+LthxAY0Hwc=
+  - secure: Q9ez0WW8e5G2JL2IuCPXmSMTNgiKMBHqbIgUdAhfVXife2L+QhA0csDs5EjCKjxLDmIXZf0IU7Tn90ygUtHNqwZf5mGScv+U0tHqqR/GFf2LhUL2XsPtFN9B8viU3aCxpLBM+9z5THZM8JBRDMDdaXkva5fnZQ5IxWM3Nzk+ZjY=
