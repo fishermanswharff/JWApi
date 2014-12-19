@@ -6,9 +6,45 @@
 
 Install:
 
+
       $ git clone git@github.com:fishermanswharff/JWApi.git
       $ cd directory/you/just/created
+      $ rake db:create db:migrate db:seed
       $ rails s
+
+
+Endpoints:
+
+               Prefix Verb   URI Pattern                              Controller#Action
+                users GET    /users(.:format)                         users#index
+                      POST   /users(.:format)                         users#create
+                 user GET    /users/:id(.:format)                     users#show
+                      PATCH  /users/:id(.:format)                     users#update
+                      PUT    /users/:id(.:format)                     users#update
+                      DELETE /users/:id(.:format)                     users#destroy
+           categories GET    /categories(.:format)                    categories#index
+                      POST   /categories(.:format)                    categories#create
+             category GET    /categories/:id(.:format)                categories#show
+                      PATCH  /categories/:id(.:format)                categories#update
+                      PUT    /categories/:id(.:format)                categories#update
+                      DELETE /categories/:id(.:format)                categories#destroy
+               images GET    /images(.:format)                        images#index
+        post_category PATCH  /posts/:post_id/categories/:id(.:format) categories#update
+                      PUT    /posts/:post_id/categories/:id(.:format) categories#update
+                      DELETE /posts/:post_id/categories/:id(.:format) categories#destroy
+          post_images POST   /posts/:post_id/images(.:format)         images#create
+           post_image PATCH  /posts/:post_id/images/:id(.:format)     images#update
+                      PUT    /posts/:post_id/images/:id(.:format)     images#update
+                posts GET    /posts(.:format)                         posts#index
+                      POST   /posts(.:format)                         posts#create
+                 post GET    /posts/:id(.:format)                     posts#show
+                      PATCH  /posts/:id(.:format)                     posts#update
+                      PUT    /posts/:id(.:format)                     posts#update
+                      DELETE /posts/:id(.:format)                     posts#destroy
+                login POST   /login(.:format)                         users#login
+               logout GET    /logout(.:format)                        users#logout
+      amazon_sign_key GET    /amazon/sign_key(.:format)               amazon#sign_key
+          email_admin POST   /email/admin(.:format)                   contact_form#route_admin
 
 
 
