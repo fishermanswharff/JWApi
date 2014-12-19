@@ -24,7 +24,7 @@ describe 'Posts API Enpoint' do
       get "/posts"
       expect(response).to be_success
       json = json(response.body)
-      expect(json.length).to be 10
+      expect(json.length).to be 11
     end
   end
 
