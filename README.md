@@ -4,6 +4,13 @@
 
 # JW API
 
+Install:
+
+      $ git clone git@github.com:fishermanswharff/JWApi.git
+      $ cd directory/you/just/created
+      $ rails s
+
+
 
 [ci-image]: https://travis-ci.org/fishermanswharff/JWApi.svg?branch=master
 [ci-url]: https://travis-ci.org/fishermanswharff/JWApi
