@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_filter :authenticate, only: :create
 
   def index
-    @posts = Post.order(created_at: :desc).limit(11)
+    @posts = Post.order(updated_at: :desc).limit(11)
     render json: @posts
   end
 
