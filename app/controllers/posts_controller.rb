@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_filter :authenticate, only: :create
 
   def index
-    @posts = Post.order(updated_at: :desc).limit(11)
+    @posts = Post.order(updated_at: :desc)
     render json: @posts
   end
 
@@ -24,16 +24,10 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if post_params[:category_id]
-      category = Category.find(post_params[:category_id])
-      @post.categories << category
+    if @post.update(post_params)
       render json: @post, status: :ok
     else
-      if @post.update(post_params)
-        render json: @post, status: :ok
-      else
-        render json: @post.errors, status: :unprocessable_entity
-      end
+      render json: @post.errors, status: :unprocessable_entity
     end
   end
 

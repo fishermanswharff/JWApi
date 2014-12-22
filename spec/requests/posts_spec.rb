@@ -20,11 +20,11 @@ describe 'Posts API Enpoint' do
   end
 
   describe '#index' do
-    it 'should send back the most recent 9 posts' do
+    it 'should send back all of the posts' do
       get "/posts"
       expect(response).to be_success
       json = json(response.body)
-      expect(json.length).to be 11
+      expect(json.length).to be @posts.length
     end
   end
 
@@ -52,19 +52,11 @@ describe 'Posts API Enpoint' do
 
   describe '#update' do
     before(:each) do
-
     end
     
     it 'should find the post by id' do
-
     end
-
-    it 'should check for a category in the parameters' do
-    end
-
-    it 'should add a unique category to the post' do
-    end
-
+    
     it 'should update the parameters' do
     end
   end
