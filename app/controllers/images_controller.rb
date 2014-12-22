@@ -24,11 +24,14 @@ class ImagesController < ApplicationController
       end
     end
   end
-
+  
   def destroy
     @image = Image.find(params[:id])
-    @image.destroy
-    head :no_content
+    if params[:post_id]
+      @post = Post.find(params[:post_id])
+      @post.images.delete(@image)
+      render json: @post, status: 202
+    end
   end
   
   private
