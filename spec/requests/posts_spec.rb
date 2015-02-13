@@ -32,7 +32,7 @@ describe 'Posts API Enpoint' do
     it 'should retreive a post by id' do
       get "/posts/#{@post.id}"
       expect(response).to be_success
-      
+
       post_response = json(response.body)
       expect(post_response['title']).to eq @post.title
     end
@@ -41,7 +41,7 @@ describe 'Posts API Enpoint' do
   describe '#create' do
     it 'should response successfully' do
       post "/posts",
-        { post: 
+        { post:
           { title: 'Herman Mellville', body: "The Great White Whale Euismod Sit Vehicula Pellentesque Vulputate", user_id: "#{@user.id}" }
         }.to_json,
         { 'Accept' => Mime::JSON, 'Content-Type' => Mime::JSON.to_s, 'HTTP_AUTHORIZATION' => '9cbaf8c82925426c869ecfc4b610c8a6' }
@@ -53,10 +53,10 @@ describe 'Posts API Enpoint' do
   describe '#update' do
     before(:each) do
     end
-    
+
     it 'should find the post by id' do
     end
-    
+
     it 'should update the parameters' do
     end
   end

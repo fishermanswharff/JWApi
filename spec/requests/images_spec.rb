@@ -41,10 +41,6 @@ describe 'Images API Endpoint' do
     end
   end
 
-  describe '#update' do
-
-  end
-
   describe '#destroy' do
     it 'should  delete the image out of the post' do
       image = @images.last
