@@ -38,4 +38,22 @@ describe 'Featured Image API endpoint' do
       expect(post["featured_image"]["url"]).to eq 'https://s3.amazonaws.com/dubya-blog-bucket/direct/cast-balsamiq-mockups.jpg'
     end
   end
+
+  describe '#update' do
+    before(:all) do
+      @feature = FeaturedImage.create(url: 'https://s3.amazonaws.com/dubya-blog-bucket/direct/cast-pl-site-map.jpg', post: @post)
+    end
+    it 'should update the featured image and return the post it belongs to' do
+      put "/posts/#{@post.id}/featured_images/#{@feature.id}",
+      { featured_image:
+        { url: 'https://s3.amazonaws.com/dubya-blog-bucket/direct/cast-balsamiq-mockups.jpg' }
+      }.to_json,
+      { 'Accept' => Mime::JSON, 'Content-Type' => Mime::JSON.to_s, 'HTTP_AUTHORIZATION' => '9cbaf8c82925426c869ecfc4b610c8a6' }
+      expect(response).to be_success
+      expect(response.content_type).to be Mime::JSON
+
+      post = json(response.body)
+      expect(post['featured_image']['url']).to eq 'https://s3.amazonaws.com/dubya-blog-bucket/direct/cast-balsamiq-mockups.jpg'
+    end
+  end
 end

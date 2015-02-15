@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :posts, except: [:new, :edit] do
     resources :categories, except: [:index, :create, :show, :new, :edit]
     resources :images, only: [:create, :destroy]
-    resources :thumbnails, only: [:create, :destroy]
-    resources :featured_images, only: [:create, :destroy]
+    resources :thumbnails, only: [:create, :update, :destroy]
+    resources :featured_images, only: [:create, :update, :destroy]
   end
 
   post '/login', to: 'users#login'

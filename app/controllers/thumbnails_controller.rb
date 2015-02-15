@@ -15,6 +15,16 @@ class ThumbnailsController < ApplicationController
     end
   end
 
+  def update
+    @post = Post.find(params[:post_id])
+    @thumb = Thumbnail.find(params[:id])
+    if @thumb.update(thumbnails_params)
+      render json: @post, status: :accepted
+    else
+      render json: @thumb.errors, status: :unprocessable_entity
+    end
+  end
+
   def destroy
   end
 

@@ -22,7 +22,6 @@ describe 'Thumbnail API endpoint' do
   end
 
   describe '#create' do
-
     it 'should respond successfully' do
       post "/posts/#{@post.id}/thumbnails",
       { thumbnail:
@@ -33,8 +32,25 @@ describe 'Thumbnail API endpoint' do
       expect(response.content_type).to be Mime::JSON
 
       post = json(response.body)
-      p post
       expect(post["thumbnail"]["url"]).to eq 'https://s3.amazonaws.com/dubya-blog-bucket/direct/cast-balsamiq-mockups.jpg'
+    end
+  end
+
+  describe '#update' do
+    before(:all) do
+      @thumb = Thumbnail.create(url: 'https://s3.amazonaws.com/dubya-blog-bucket/direct/cast-pl-site-map.jpg', post: @post)
+    end
+    it 'should update the featured image and return the post it belongs to' do
+      put "/posts/#{@post.id}/thumbnails/#{@thumb.id}",
+      { thumbnail:
+        { url: 'https://s3.amazonaws.com/dubya-blog-bucket/direct/cast-balsamiq-mockups.jpg' }
+      }.to_json,
+      { 'Accept' => Mime::JSON, 'Content-Type' => Mime::JSON.to_s, 'HTTP_AUTHORIZATION' => '9cbaf8c82925426c869ecfc4b610c8a6' }
+      expect(response).to be_success
+      expect(response.content_type).to be Mime::JSON
+
+      post = json(response.body)
+      expect(post['thumbnail']['url']).to eq 'https://s3.amazonaws.com/dubya-blog-bucket/direct/cast-balsamiq-mockups.jpg'
     end
   end
 end

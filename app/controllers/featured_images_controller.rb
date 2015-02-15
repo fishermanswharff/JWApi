@@ -5,7 +5,7 @@ class FeaturedImagesController < ApplicationController
     if params[:post_id]
       @post = Post.find(params[:post_id])
       @post.featured_image = @feature
-      render json: @post, status: :ok, location: @post
+      render json: @post, status: :created, location: @post
     else
       if @feature.save
         render json: @feature, status: :created, location: @feature
@@ -15,12 +15,22 @@ class FeaturedImagesController < ApplicationController
     end
   end
 
+  def update
+    @post = Post.find(params[:post_id])
+    @feature = FeaturedImage.find(params[:id])
+    if @feature.update(featured_image_params)
+      render json: @post, status: :accepted
+    else
+      render json: @feature.errors, status: :unprocessable_entity
+    end
+  end
+
   def destroy
   end
 
   private
   def featured_image_params
-    params.require(:featured_image).permit(:url)
+    params.require(:featured_image).permit(:url, :post_id)
   end
 
 end
