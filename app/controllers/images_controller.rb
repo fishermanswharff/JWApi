@@ -1,15 +1,15 @@
 class ImagesController < ApplicationController
-  
+
   def index
     @images = Image.all
     render json: @images, status: :ok
   end
-  
+
   def show
     @image = Image.find(params[:id])
     render json: @image, status: :ok
   end
-  
+
   def create
     @image = Image.create(image_params)
     if params[:post_id]
@@ -24,7 +24,7 @@ class ImagesController < ApplicationController
       end
     end
   end
-  
+
   def destroy
     @image = Image.find(params[:id])
     if params[:post_id]
@@ -33,7 +33,7 @@ class ImagesController < ApplicationController
       render json: @post, status: 202
     end
   end
-  
+
   private
   def image_params
     params.require(:image).permit(:url, :post_id)

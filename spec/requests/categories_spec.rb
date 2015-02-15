@@ -33,7 +33,6 @@ describe 'Categories API Endpoint' do
     end
 
     it 'should find the category by id' do
-
     end
 
     it 'should check to see if the category already exists in the post' do

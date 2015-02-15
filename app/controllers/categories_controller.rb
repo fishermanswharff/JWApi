@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
       unless @post.categories.include? @category
         @post.categories << @category
       end
-      render json: @post, status: :ok
+      render json: @post.categories, status: :ok
     else
       if @category.update(category_params)
         head :no_content
