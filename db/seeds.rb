@@ -2,7 +2,6 @@ User.delete_all
 Post.delete_all
 # Category.delete_all
 
-
 ActiveRecord::Base.establish_connection
 ActiveRecord::Base.connection.tables.each do |table|
   next if table == 'schema_migrations'
@@ -179,12 +178,7 @@ images.each { |image| posts[12].images << image }
 # curl -X PATCH -F "post[image]=@/Users/jason/Pictures/Kauai-2014/bin/full-size/kauai-napali-coast-boat-2.jpg" http://jwdotcom.herokuapp.com/posts/:id
 # image: "http://s3.amazonaws.com/dubya-blog-bucket/posts/images/000/000/001/original/post-image-1.gif?1418096877" 
 # image: "https://s3.amazonaws.com/dubya-blog-bucket/posts/images/000/000/001/original/kauai-napali-coast-boat-2.jpg" 
-
-
-
-
-
-
+# curl -i -X POST -d 'user[username]=joe&[password]=' http://localhost:3000/users
 
 
 

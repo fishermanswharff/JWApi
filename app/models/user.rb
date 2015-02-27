@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   before_create :set_token
   has_many :posts
-  
+
   enum role: [:admin,:generic]
   has_secure_password
 
