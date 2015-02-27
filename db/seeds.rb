@@ -11,22 +11,13 @@ end
 
 users = User.create([
   {
-    first_name:"Jason",
-    last_name:"Wharff",
-    username:"jasonwharff",
+    first_name:"Ricky",
+    last_name:"Bobby",
+    username:"me",
     role:"admin",
-    email:"fishermanswharff@mac.com",
-    password_digest:"$2a$10$qA2kdO7MOlWkAUIUQWhNtuzlIZScAs69QrTHxn13BM9i6jUUuLbfS",
-    token:"9cbaf8c82925426c869ecfc4b610c8a6",
-  },
-  {
-    first_name: 'Jason',
-    last_name: 'Wharff',
-    username: 'dubya',
-    role: 'admin',
-    email: 'jasonwharff@gmail.com',
-    password_digest: '$2a$10$iUY.xKqExZ7DhaWVAAh5Q.o/gfUDR5I7iHTp2Y46nmrogYIV504X6',
-    token: '7a2ab5a8677b446eb1c269c5056a001d'
+    email:"puma@rickybobby.com",
+    password_digest:"$2a$10$QxAfOdEFf42Gz9Nor5jmJeOQnIzJkCqU69EmeEP4ZuA0oScX/sNNG",
+    token:"995c3568de8549b687dede7c6a96eb75",
   }
 ])
 
@@ -169,7 +160,7 @@ posts[32].categories << Category.find_by(name:"TIL")
 
 images.each { |image| posts[12].images << image }
 
-# cUrl to the user's avatar
+# curl to the user's avatar
 # curl -X PATCH -F "user[avatar]=@app/assets/images/judge.jpg" http://localhost:3000/users/1
 # curl -X PATCH -F "user[avatar]=@app/assets/images/judge.jpg" http://jwdotcom.herokuapp.com/users/9
 
@@ -178,7 +169,9 @@ images.each { |image| posts[12].images << image }
 # curl -X PATCH -F "post[image]=@/Users/jason/Pictures/Kauai-2014/bin/full-size/kauai-napali-coast-boat-2.jpg" http://jwdotcom.herokuapp.com/posts/:id
 # image: "http://s3.amazonaws.com/dubya-blog-bucket/posts/images/000/000/001/original/post-image-1.gif?1418096877" 
 # image: "https://s3.amazonaws.com/dubya-blog-bucket/posts/images/000/000/001/original/kauai-napali-coast-boat-2.jpg" 
-# curl -i -X POST -d 'user[username]=joe&[password]=' http://localhost:3000/users
+
+
+# curl -i -X POST -d 'user[username]=me&user[password]=123456&user[password_confirmation]=123456&user[first_name]=ricky&user[last_name]=bobby&user[role]=admin&user[email]=puma@rickybobby.com' http://localhost:3000/users
 
 
 
