@@ -173,6 +173,8 @@ images.each { |image| posts[12].images << image }
 
 # curl -i -X POST -d 'user[username]=me&user[password]=123456&user[password_confirmation]=123456&user[first_name]=ricky&user[last_name]=bobby&user[role]=admin&user[email]=puma@rickybobby.com' http://localhost:3000/users
 
+# curl -i -X POST -d 'user[username]=yo&user[password]=123456&user[password_confirmation]=123456&user[first_name]=joemamma&user[last_name]=fu&user[role]=admin&user[email]=me@me.com' http://localhost:3000/users
+
 
 
 
