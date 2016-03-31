@@ -19,7 +19,7 @@ group :development, :test do
   gem "faker"
 end
 
-group :test do 
+group :test do
   gem "codeclimate-test-reporter", require: nil
 end
 
