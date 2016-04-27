@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  # has_many :user_authentications, dependent: :destroy
-  # validates :username, :password, presence: true
 
   before_create :set_token
   has_many :posts
