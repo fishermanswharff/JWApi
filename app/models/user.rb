@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   end
 
   private
+
   def set_token
     return if token.present?
     self.token = generate_token
