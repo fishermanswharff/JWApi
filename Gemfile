@@ -1,13 +1,12 @@
 source 'https://rubygems.org'
-ruby "2.2.0"
-gem 'rails', '4.2.0.beta2'
+ruby "2.3.0"
+gem 'rails', '4.2.6'
 gem 'rails-api'
-gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
+gem 'active_model_serializers'
 gem 'rack-cors', require: 'rack/cors'
 gem 'pg'
-gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'bcrypt'
 gem 'aws-sdk'
-gem 'arel', '6.0.0.beta2'
 gem 'newrelic_rpm'
 
 group :development, :test do
