@@ -1,16 +1,17 @@
 class FeaturedImagesController < ApplicationController
 
   def create
-    @feature = FeaturedImage.create(featured_image_params)
+    @featured_image = FeaturedImage.create(featured_image_params)
     if params[:post_id]
-      @post = Post.find(params[:post_id])
-      @post.featured_image = @feature
-      render json: @post, status: :created, location: @post
+      post = Post.find(params[:post_id])
+      post.featured_image = @featured_image
+      post.save
+      render json: post, serializer: PostSerializer, include: ['featured_image'], status: :created
     else
-      if @feature.save
-        render json: @feature, status: :created, location: @feature
+      if @featured_image.save
+        render json: @featured_image, status: :created, location: @featured_image
       else
-        render json: @feature.errors, status: :unprocessable_entity
+        render json: @featured_image.errors, status: :unprocessable_entity
       end
     end
   end
@@ -19,7 +20,7 @@ class FeaturedImagesController < ApplicationController
     @post = Post.find(params[:post_id])
     @feature = FeaturedImage.find(params[:id])
     if @feature.update(featured_image_params)
-      render json: @post, status: :accepted
+      render json: @post, serializer: PostSerializer, include: ['featured_image'], status: :accepted
     else
       render json: @feature.errors, status: :unprocessable_entity
     end

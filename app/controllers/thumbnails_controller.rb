@@ -5,7 +5,7 @@ class ThumbnailsController < ApplicationController
     if params[:post_id]
       @post = Post.find(params[:post_id])
       @post.thumbnail = @thumb
-      render json: @post, status: :ok, location: @post
+      render json: @post, serializer: PostSerializer, include: ['thumbnail'], status: :ok, location: @post
     else
       if @thumb.save
         render json: @thumb, status: :created, location: @thumb
@@ -19,7 +19,7 @@ class ThumbnailsController < ApplicationController
     @post = Post.find(params[:post_id])
     @thumb = Thumbnail.find(params[:id])
     if @thumb.update(thumbnails_params)
-      render json: @post, status: :accepted
+      render json: @post, serializer: PostSerializer, include: ['thumbnail'], status: :accepted
     else
       render json: @thumb.errors, status: :unprocessable_entity
     end

@@ -4,8 +4,6 @@ require 'spec_helper'
 describe 'Posts API Enpoint' do
 
   before(:each) do
-    Post.delete_all
-    User.delete_all
     @user = User.create({
       first_name:"Jason",
       last_name:"Wharff",

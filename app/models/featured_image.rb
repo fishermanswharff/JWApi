@@ -1,4 +1,4 @@
 class FeaturedImage < ActiveRecord::Base
-  belongs_to :post
   validates :url, presence: true
+  belongs_to :post
 end

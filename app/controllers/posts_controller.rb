@@ -8,8 +8,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-    render json: @post, include: 'user,categories,images', status: :ok
+    post = Post.find(params[:id])
+    render json: post, status: :ok
   end
 
   def create
@@ -38,6 +38,7 @@ class PostsController < ApplicationController
   end
 
   private
+
   def post_params
     params.require(:post).permit(:title, :body, images: [], categories: [])
   end

@@ -2,11 +2,7 @@ require 'rails_helper'
 require 'spec_helper'
 
 describe 'Images API Endpoint' do
-
-  before(:all) do
-    Post.delete_all
-    Image.delete_all
-    User.delete_all
+  before(:each) do
     @user = User.create({
       first_name:"Jason",
       last_name:"Wharff",

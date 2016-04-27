@@ -26,12 +26,10 @@ class ImagesController < ApplicationController
   end
 
   def destroy
-    @image = Image.find(params[:id])
-    if params[:post_id]
-      @post = Post.find(params[:post_id])
-      @post.images.delete(@image)
-      render json: @post, status: 202
-    end
+    image = Image.find(params[:id])
+    post = Post.find(params[:post_id])
+    post.images.delete(image)
+    render json: post, serializer: PostSerializer, include: ['images'], status: 202
   end
 
   private
