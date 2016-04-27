@@ -30,7 +30,7 @@ describe 'Images API Endpoint' do
   describe '#create' do
     it 'should add the image to the post''s images ' do
       post "/posts/#{@post.id}/images",
-        { image: 
+        { image:
           { url: 'https://s3.amazonaws.com/dubya-blog-bucket/uploads/eb00f33c-b80e-4e72-ada4-36bdc24f551b',
             post_id: @post.id
            }
