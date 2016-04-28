@@ -8,8 +8,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    post = Post.includes(:featured_image, :thumbnail, :images).find(params[:id])
-    render json: post, include: ['featured_image', 'thumbnail', 'images'], status: :ok
+    post = Post.includes(:featured_image, :thumbnail, :images, :categories).find(params[:id])
+    render json: post, include: ['featured_image', 'thumbnail', 'images', 'categories'], status: :ok
   end
 
   def create
