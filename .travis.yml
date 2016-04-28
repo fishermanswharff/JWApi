@@ -17,7 +17,6 @@ deploy:
   run:
   - rake db:migrate
   - restart
-  - rake cleanup
 env:
   global:
   - secure: eY04F5OBrZo75UHMaWJcssLer1059KOATAFnG7pw4Qw9IlURjJKGTjUd+kwSDVXZOzVZhiJABphOZmWLKG6L3vAczCEhbsWl0EcuIyQi0gWttp4PobVqisnR6CYF5/4t6TW8E6j7dbivBUNzb1apLgvd5W7J7utEijBgIT9j7o8=

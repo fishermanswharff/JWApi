@@ -3,8 +3,8 @@ class PostsController < ApplicationController
   before_filter :authenticate, only: :create
 
   def index
-    @posts = Post.includes(:featured_image, :thumbnail).order(updated_at: :desc)
-    render json: @posts, include: ['featured_image', 'thumbnail']
+    @posts = Post.includes(:featured_image, :thumbnail, :images).order(updated_at: :desc)
+    render json: @posts, include: ['featured_image', 'thumbnail', 'images']
   end
 
   def show
