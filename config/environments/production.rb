@@ -1,6 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.log_level = :info
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -86,10 +88,10 @@ Rails.application.configure do
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.logger
-  config.action_mailer.default_url_options = { :host => 'jwdotcom.herokuapp.com' } 
+  config.action_mailer.default_url_options = { :host => 'jwdotcom.herokuapp.com' }
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = {from: 'jasonwharff@gmail.com'}
   config.action_mailer.delivery_method = :smtp
-  
+
 end
